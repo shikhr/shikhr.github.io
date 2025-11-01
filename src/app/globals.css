@@ -1,0 +1,88 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Theme configuration */
+@theme {
+  /* Light mode colors (default) */
+  --color-background: oklch(100% 0 0);
+  --color-foreground: oklch(15.27% 0 0);
+  --color-card: oklch(100% 0 0);
+  --color-card-foreground: oklch(15.27% 0 0);
+  --color-popover: oklch(100% 0 0);
+  --color-popover-foreground: oklch(15.27% 0 0);
+  --color-primary: oklch(23.53% 0 0);
+  --color-primary-foreground: oklch(98.04% 0 0);
+  --color-secondary: oklch(96.08% 0 0);
+  --color-secondary-foreground: oklch(23.53% 0 0);
+  --color-muted: oklch(96.08% 0 0);
+  --color-muted-foreground: oklch(50.59% 0 0);
+  --color-muted-background: oklch(96.08% 0 0);
+  --color-accent: oklch(96.08% 0 0);
+  --color-accent-foreground: oklch(23.53% 0 0);
+  --color-destructive: oklch(62.75% 0.253 27.33);
+  --color-destructive-foreground: oklch(98.04% 0 0);
+  --color-border: oklch(89.8% 0 0);
+  --color-input: oklch(89.8% 0 0);
+  --color-ring: oklch(15.27% 0 0);
+
+  --radius: 0.5rem;
+}
+
+/* Base styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+
+  /* Dark mode overrides */
+  .dark * {
+    border-color: oklch(20.39% 0 0);
+  }
+
+  .dark body {
+    background-color: oklch(15.27% 0 0);
+    color: oklch(98.04% 0 0);
+  }
+
+  .dark {
+    --color-background: oklch(15.27% 0 0);
+    --color-foreground: oklch(98.04% 0 0);
+    --color-card: oklch(15.27% 0 0);
+    --color-card-foreground: oklch(98.04% 0 0);
+    --color-popover: oklch(15.27% 0 0);
+    --color-popover-foreground: oklch(98.04% 0 0);
+    --color-primary: oklch(98.04% 0 0);
+    --color-primary-foreground: oklch(23.53% 0 0);
+    --color-secondary: oklch(20.39% 0 0);
+    --color-secondary-foreground: oklch(98.04% 0 0);
+    --color-muted: oklch(20.39% 0 0);
+    --color-muted-foreground: oklch(66.67% 0 0);
+    --color-muted-background: oklch(20.39% 0 0);
+    --color-accent: oklch(20.39% 0 0);
+    --color-accent-foreground: oklch(98.04% 0 0);
+    --color-destructive: oklch(37.65% 0.176 27.33);
+    --color-destructive-foreground: oklch(98.04% 0 0);
+    --color-border: oklch(20.39% 0 0);
+    --color-input: oklch(20.39% 0 0);
+    --color-ring: oklch(83.14% 0 0);
+  }
+}
+
+@layer components {
+  .section-flora {
+    scroll-snap-type: both proximity;
+  }
+}
+
+@utility border-flora {
+  @apply border-2 border-black/15 dark:border-white/15;
+}
