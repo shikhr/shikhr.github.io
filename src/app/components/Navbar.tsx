@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import HomeIcon from "@mui/icons-material/Home";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import EmailIcon from "@mui/icons-material/Email";
-import LightModeIcon from "@mui/icons-material/LightMode";
-import DarkModeIcon from "@mui/icons-material/DarkMode";
-import XIcon from "@mui/icons-material/X";
-import { DATA } from "../data";
+import HomeIcon from '@mui/icons-material/Home';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import EmailIcon from '@mui/icons-material/Email';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import XIcon from '@mui/icons-material/X';
+import { DATA } from '../data';
 
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 // Shared button/icon wrapper component
 const NavButton = ({
@@ -26,7 +26,7 @@ const NavButton = ({
   external?: boolean;
 }) => {
   const className =
-    "inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-black/10 dark:hover:bg-white/10  hover:text-accent-foreground h-10 w-10 rounded-full mx-0.5 group-hover:mx-1";
+    'inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-black/10 dark:hover:bg-white/10  hover:text-accent-foreground h-10 w-10 rounded-full mx-0.5 group-hover:mx-1';
 
   if (href) {
     return (
@@ -34,8 +34,8 @@ const NavButton = ({
         href={href}
         className={className}
         aria-label={label}
-        target={external ? "_blank" : undefined}
-        rel={external ? "noopener noreferrer" : undefined}
+        target={external ? '_blank' : undefined}
+        rel={external ? 'noopener noreferrer' : undefined}
       >
         {children}
       </a>
@@ -49,20 +49,24 @@ const NavButton = ({
   );
 };
 
-export function Navbar() {
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
-
+export function Navbar({
+  theme,
+  setTheme,
+}: {
+  theme: 'light' | 'dark';
+  setTheme: (theme: 'light' | 'dark') => void;
+}) {
   useEffect(() => {
     const root = document.documentElement;
-    if (theme === "dark") {
-      root.classList.add("dark");
+    if (theme === 'dark') {
+      root.classList.add('dark');
     } else {
-      root.classList.remove("dark");
+      root.classList.remove('dark');
     }
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
+    setTheme(theme === 'dark' ? 'light' : 'dark');
   };
 
   return (
@@ -93,14 +97,14 @@ export function Navbar() {
           <XIcon sx={{ fontSize: 22 }} />
         </NavButton>
 
-        <NavButton href={`mailto:${DATA.contact.email}`} label="Email" external>
+        {/* <NavButton href={`mailto:${DATA.contact.email}`} label="Email" external>
           <EmailIcon sx={{ fontSize: 22 }} />
-        </NavButton>
+        </NavButton> */}
 
         <div className="shrink-0 bg-gray-700 w-px h-11/12 group-hover:h-10/12  transition-all duration-300  mx-0.5  group-hover:mx-1" />
 
         <NavButton onClick={toggleTheme} label="Toggle theme">
-          {theme === "dark" ? (
+          {theme === 'dark' ? (
             <DarkModeIcon sx={{ fontSize: 22 }} />
           ) : (
             <LightModeIcon sx={{ fontSize: 22 }} />

@@ -7,7 +7,7 @@ export function ContactSection() {
         <BlurFade delay={0.65}>
           <div className="space-y-3">
             <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              Let's connect and build something amazing together
+              Let&rsquo;s connect and build something amazing together
             </p>
           </div>
         </BlurFade>

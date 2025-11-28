@@ -1,17 +1,21 @@
 import { BlurFade } from '../components/BlurFade';
+import SectionHeading from '../components/SectionHeading';
 import { DATA } from '../data';
 
 export function SkillsSection() {
   return (
-    <section className="section-flora" id="skills">
-      <div className="flex min-h-0 flex-col gap-y-3">
-        <BlurFade delay={0.37}>
-          <h2 className="text-xl font-bold">Skills</h2>
+    <section
+      className="section-flora border-t border-border/60 py-10"
+      id="skills"
+    >
+      <div className="flex min-h-0 flex-col gap-y-4">
+        <BlurFade>
+          <SectionHeading>Skills</SectionHeading>
         </BlurFade>
-        <div className="flex flex-wrap gap-1">
-          {DATA.skills.map((skill, index) => (
-            <BlurFade key={skill} delay={0.38 + index * 0.05}>
-              <div className="inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-primary text-primary-foreground shadow hover:bg-primary/80">
+        <div className="flex flex-wrap gap-2">
+          {DATA.skills.map((skill) => (
+            <BlurFade key={skill}>
+              <div className="inline-flex items-center rounded-full border border-border/70 bg-secondary/70 px-3 py-1 text-xs font-medium text-muted-foreground">
                 {skill}
               </div>
             </BlurFade>

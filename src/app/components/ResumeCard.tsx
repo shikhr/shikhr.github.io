@@ -1,4 +1,5 @@
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import Image from 'next/image';
 
 interface ResumeCardProps {
   logoUrl?: string;
@@ -25,10 +26,11 @@ export function ResumeCard({
       <div className="flex-none">
         <div className="relative  bg-background border-flora border flex shrink-0 overflow-hidden rounded-full size-12 m-auto ">
           {logoUrl ? (
-            <img
-              src={logoUrl}
+            <Image
+              src={logoUrl as string}
               alt={altText}
-              className="h-full w-full object-cover"
+              fill
+              className="object-cover"
             />
           ) : (
             <span className="flex h-full w-full items-center justify-center">
@@ -69,8 +71,8 @@ export function ResumeCard({
       <a
         href={href}
         className="block cursor-pointer"
-        target={href.startsWith("http") ? "_blank" : undefined}
-        rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+        target={href.startsWith('http') ? '_blank' : undefined}
+        rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
       >
         <div className="rounded-lg bg-card text-card-foreground flex">
           {content}

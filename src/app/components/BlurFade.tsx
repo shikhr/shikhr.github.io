@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import type { ReactNode } from "react";
+import { motion, useReducedMotion } from 'framer-motion';
+import type { ReactNode } from 'react';
 
 interface BlurFadeProps {
   children: ReactNode;
@@ -13,17 +13,23 @@ interface BlurFadeProps {
 export function BlurFade({
   children,
   delay = 0,
-  yOffset = 6,
+  yOffset = 4,
   className,
 }: BlurFadeProps) {
+  const prefersReducedMotion = useReducedMotion();
+
+  if (prefersReducedMotion) {
+    return <div className={className}>{children}</div>;
+  }
+
   return (
     <motion.div
-      initial={{ opacity: 0, filter: "blur(6px)", y: yOffset }}
-      animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+      initial={{ opacity: 0, y: yOffset }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{
-        duration: 0.4,
+        duration: 0.32,
         delay,
-        ease: [0.25, 0.4, 0.55, 1.0],
+        ease: [0.25, 0.1, 0.25, 1],
       }}
       className={className}
     >
