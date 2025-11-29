@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { BlurFade } from '../components/BlurFade';
 import { DATA } from '../data';
 
@@ -7,11 +8,13 @@ export function HeroSection({ theme }: { theme: 'light' | 'dark' }) {
       <div className="mx-auto flex w-full flex-col gap-8">
         <BlurFade className="flex flex-col items-center gap-6 text-center xs:flex-row xs:items-center xs:justify-between xs:text-left">
           <div className="relative order-1 flex shrink-0 overflow-hidden rounded-full size-20 xs:size-28 p-2 border border-flora bg-secondary/30 xs:order-2">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
+              width={500}
+              height={500}
+              loading="eager"
+              placeholder="empty"
               src={theme === 'dark' ? DATA.logo_dark : DATA.logo_light}
-              alt={`${DATA.initials} monogram`}
-              className="h-full w-full object-contain"
+              alt={`${DATA.initials}`}
             />
           </div>
 

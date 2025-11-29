@@ -15,7 +15,7 @@ export function SkillsSection() {
         <div className="flex flex-wrap gap-2">
           {DATA.skills.map((skill) => (
             <BlurFade key={skill}>
-              <div className="inline-flex items-center rounded-full border border-border/70 bg-secondary/70 px-3 py-1 text-xs font-medium text-muted-foreground">
+              <div className="inline-flex items-center rounded-full border border-border/70 bg-secondary/70 px-3 py-1 text-xs font-medium text-muted-foreground transition-all duration-200 hover:bg-primary/10 hover:border-primary/40 hover:text-foreground cursor-default dark:hover:bg-primary/15 dark:hover:border-primary/50">
                 {skill}
               </div>
             </BlurFade>

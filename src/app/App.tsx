@@ -8,10 +8,18 @@ import { HeroSection } from './sections/HeroSection';
 import { SkillsSection } from './sections/SkillsSection';
 import { WorkSection } from './sections/WorkSection';
 import { ProjectSection } from './sections/ProjectSection';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
-  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    if (typeof window === 'undefined') return 'dark';
+    const saved = localStorage.getItem('theme');
+    return saved === 'light' ? 'light' : 'dark';
+  });
+
+  useEffect(() => {
+    localStorage.setItem('theme', theme);
+  }, [theme]);
 
   return (
     <>
